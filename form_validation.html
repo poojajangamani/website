@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1> sign up from</h1>
+    <form onsubmit="return validformate()">
+        Name : <input id="name" type="text" placeholder="Name"> <br>
+        Email: <input type="email" id="email" placeholder="enter email"> <br>
+        password: <input type="password" id="password" placeholder="enter password"> <br>
+        <input type="submit" value="submit">
+    </form>
+    <script>
+        function validformate(){
+        let name = document.getElementById("name"). value;    
+        let email= document.getElementById("email"). value; 
+        let password= document.getElementById("password"). value; 
+
+        if(name == "" || email == "" || password == ""){
+            alert("fill all the fields");
+            return false;
+        }
+        alert("form submitted successfully");
+        return true;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1> product Display</h1>
+    <div id="products"> 
+    </div>
+    <script>
+        const products = [
+            {id: 1,name: "product 1",discription:"discription for product 1",price: 19.99},
+            {id: 2,name: "product 1",discription:"discription for product 1",price: 19.99},
+            {id: 3,name: "product 1",discription:"discription for product 1",price: 19.99},
+            {id: 4,name: "product 1",discription:"discription for product 1",price: 19.99},
+            {id: 5,name: "product 1",discription:"discription for product 1",price: 19.99},
+            {id: 6,name: "product 1",discription:"discription for product 1",price: 19.99},
+            {id: 7,name: "product 1",discription:"discription for product 1",price: 19.99},
+            {id: 8,name: "product 1",discription:"discription for product 1",price: 19.99},
+            {id: 9,name: "product 1",discription:"discription for product 1",price: 19.99},
+            {id: 10,name: "product 1",discription:"discription for product 1",price: 19.99},
+            {id: 11,name: "product 1",discription:"discription for product 1",price: 19.99}, 
+            {id: 12,name: "product 1",discription:"discription for product 1",price: 19.99},
+        ]
+
+        const productsContainer = document.getElementById("products");
+
+        function renderProducts(){
+            productsContainer.innerHTML = products.map(product =>
+            <div class="product">
+                <h1>${product.name}</h1> 
+                <p>${product.discription}</p>
+                <div class="price">Rs ${product.price}</div>
+                </div>
+            ).join("");
+            }
+
+    renderProducts();
+ </script>
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            width: 100vw;
+            /*border: 2px solid black;*/
+            background-image: linear-gradient(165deg, rgb(65, 17, 75), rgb(156, 79, 173));
+
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .left-part {
+            height: 100%;
+            width: 40%;
+           /* border: 2px solid red;*/
+
+           display: flex;
+           flex-direction: column;
+           justify-content: center;
+           align-items: flex-start;
+           text-align: left;
+           gap: 30px;
+
+           color: white;
+           padding-left: 50px;
+        }
+        h1{
+            font-size: 45px;
+        }
+        h1::first-letter{
+            font-size: 90px;
+            color:rgb(195, 91, 221);
+        }
+
+        .right-part {
+            height: 100%;
+            width: 60%;
+            border: 2px solid blue;
+
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .calculator {
+            height: 90%;
+            width: 35%;
+            border: 5px solid white;
+            border-radius: 20px;
+            background-color: black;
+
+            overflow: hidden;
+        }
+
+        .box {
+            height: 13%;
+            width: 100%;
+            /*border: 2px solid yellow;*/
+
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            gap: 2px;
+            margin-bottom: 2px;
+        }
+
+        button {
+            height: 100%;
+            width: 25%;
+            border: none;
+            background-color: rgb(47, 54, 70);
+            color: white;
+        }
+
+        .top-box {
+            height: 35%;
+            width: 100%;
+            /*border: 2px solid green;*/
+
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        #output {
+            max-height: 60%;
+            min-height: 25%;
+            width: 100%;
+            text-align: right;
+            padding: 15px;
+            font-size: 18px;
+            background-color: black;
+            color: rgb(216, 208, 208);
+
+            border: none;
+            outline: none;
+
+        }
+
+        #result {
+            height: 40%;
+            width: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: right;
+
+            font-size: 45px;
+            padding: 15px;
+            background-color: black;
+            color: rgb(242, 236, 236);
+            border: none;
+            outline: none;
+            color: green;
+
+        }
+
+        .double-btn {
+            width: 50%;
+        }
+
+        .pink {
+            background-color: rgb(195, 91, 221);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="left-part">
+        
+        <h1>Calculator Design </h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam, aliquam hic quo quae repellendus perspiciatis cupiditate aut et enim tempore facere nobis laudantium nesciunt vel quos eaque, dolore illo placeat.</p>
+        
+    </div>
+
+    <div class="right-part">
+        <div class="calculator">
+            <div class="top-box">
+                <input type="text" id="output" />
+
+                <input type="text" id="result" value="650" />
+            </div>
+
+            <div class="box">
+                <button onclick="Allclear()">AC</button>
+                <button onclick="addvalue(this)">X</button>
+
+                <button class="double-btn pink" onclick="addvalue(this)">/</button>
+            </div>
+            <div class="box">
+                <button onclick="addvalue(this)">7</button>
+                <button onclick="addvalue(this)">8</button>
+                <button onclick="addvalue(this)">9</button>
+                <button class="pink" onclick="addvalue(this)">X</button>
+            </div>
+            <div class="box">
+                <button onclick="addvalue(this)">4</button>
+                <button onclick="addvalue(this)">5</button>
+                <button onclick="addvalue(this)">6</button>
+                <button class="pink" onclick="addvalue(this)">-</button>
+            </div>
+            <div class="box">
+                <button onclick="addvalue(this)">1</button>
+                <button onclick="addvalue(this)">2</button>
+                <button onclick="addvalue(this)">3</button>
+                <button class="pink" onclick="addvalue(this)">+</button>
+            </div>
+            <div class="box">
+                <button>.</button>
+                <button onclick="addvalue(this)">0</button>
+                <button class="double-btn pink" onclick="final_result()">=</button>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        let oup = document.getElementById("output");
+        let res = document.getElementById("result");
+
+        console.log(oup);
+        console.log(res);
+
+        if(res.value === ''){
+            res.style.display = 'none'
+            oup.style.fontSize = '45px'
+        }
+
+        function addvalue(ele) {
+            console.log("add value function is working");
+            console.log(ele);
+            console.log(ele.innerText);
+
+            if(res.value){
+                oup.value = ''
+                res.value = ''
+                res.style.display = 'none'
+                oup.value.fontSize = '45px'
+            }
+
+            oup.vlaue = oup.value + ele.innerText;
+        }
+
+        function Allclear(){
+            oup.value = "";
+            res.value = "";
+            res.style.display = 'none'
+        }
+        function final_result(){
+            res.style.display = 'block'
+            oup.style.fontsize = '18px'
+            console.log(eval(oup.value));
+            res.value = eval(oup.value);
+        }
+
+    </script>
+</body>
+
+</html>

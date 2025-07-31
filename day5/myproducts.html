@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .product-card {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            margin: 1rem;
+            width: 200px;
+            display: inline-block;
+            vertical-align: top;
+        }
+        .product-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+        }
+    </style>
+</head>
+<body>
+    <h2>Display the products here</h2>
+    <div id="productList"></div>
+
+    <script>
+        async function loadProducts() {              
+            try {
+            const res = await fetch("http://localhost:3001/product");
+            const json = await res.json();
+           
+            const products = Array.isArray(json) ? json : json.products;
+
+            const container = document.getElementById("productList");
+            container.innerHTML = "";
+
+            products.forEach(product => {
+                const card = document.createElement("div");
+                card.className = "product-card";
+                card.innerHTML = `
+                <img src = "${product.image}" alt ="${product.title}" />
+                <h4>${product.name}</h4>
+                <p><strong> ${product.price}</strong></p>
+                `;
+                container.appendChild(card);
+            });
+
+        } catch (err) {
+         console.error("Error loading products:",err);
+         document.getElementById("productList").innerHTML = "<p>Error loadingproducts.</p>"
+        }
+    }
+
+        loadProducts();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

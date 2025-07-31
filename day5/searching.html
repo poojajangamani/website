@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <input type="text" id="searchbox" placeholder="search...">
+        <ul id="productList"></ul>
+    </div>
+    <script>
+        const products = ["Shoes", "Watch", "Kitchen utensils", "Gown", "Mobile", "Jewellery", "Headphones", "Video console", "Bag", "Lipstick"];
+
+        function display(list) {
+            let container = document.getElementById("productList");
+            container.innerHTML = "";
+            list.forEach(item => {
+                const listItem = document.createElement("li");
+                listItem.textContent = item;
+                container.appendChild(listItem);    
+            })
+        }
+        document.getElementById("searchbox").addEventListener("input", function(e){
+            const value = e.target.value.toLowerCase();
+            const filtered = products.filter(p => p.toLowerCase().includes(value));
+            display(filtered);
+        })
+
+        display(products);
+    </script>
+</body>
+</html>
